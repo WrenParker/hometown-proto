@@ -9,6 +9,14 @@ module.exports = {
         }
       },
       {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
         test: /\.css$/,
         loader: "style-loader!css-loader"
       }

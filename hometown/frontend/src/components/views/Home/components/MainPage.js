@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Jumbotron, Card, ListGroup, Badge} from 'react-bootstrap';
+import {Jumbotron, Card, ListGroup, Badge, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { getBusiness } from '../../../../actions/business'
@@ -8,9 +8,7 @@ import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
 
 export class MainPage extends Component {
   state = {
-    lat: 0,
-    long: 0,
-    zoom: 15
+    currentSelected: null
   }
 
   constructor(props) {
@@ -21,7 +19,10 @@ export class MainPage extends Component {
   navTap(e) {
     document.getElementById("select-name").innerHTML = e.name
     document.getElementById("select-text").innerHTML = e.description
-
+    document.getElementById("card").style.backgroundColor = e.storefront[0].color
+    this.state = {
+      currentSelected: e
+    }
   }
 
   componentDidMount() {
@@ -37,10 +38,12 @@ export class MainPage extends Component {
       <div className="main-page">
         <Jumbotron style={{height: "100%"}}>
           <div className="main-grid">
-            <Card id="card" className="selected-item">
+            <Card onClick={e => console.log(this)} id="card" className="selected-item">
               <Card.Body id="select">
-                <Card.Title id="select-name">
-                  Select a store
+                <Card.Title>
+                  <div id="select-name">
+                    Select a store
+                  </div>
                 </Card.Title>
                 <Card.Text id="select-text">
                 </Card.Text>

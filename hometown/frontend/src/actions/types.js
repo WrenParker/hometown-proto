@@ -1,1 +1,2 @@
 export const GET_BUSINESS = "GET_BUSINESS";
+export const SELECT_BUSINESS = "SELECT_BUSINESS";

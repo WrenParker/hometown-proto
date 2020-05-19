@@ -31,3 +31,8 @@
 #map {
   height: 100%;
 }
+
+#link {
+  text-decoration: none;
+  color: black;
+}

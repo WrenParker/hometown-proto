@@ -2,7 +2,7 @@ import { GET_BUSINESS, SELECT_BUSINESS } from '../actions/types.js';
 
 const initialState = {
   business: [],
-  selectBusiness: null
+  currentBusiness: null
 }
 
 export default function(state = initialState, action) {
@@ -15,7 +15,7 @@ export default function(state = initialState, action) {
     case SELECT_BUSINESS:
       return{
         ...state,
-        selectBusiness: action.payload
+        currentBusiness: action.payload
       }
     default:
       return state;

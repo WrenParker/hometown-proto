@@ -1,8 +1,7 @@
-import Nav from '../shared/Nav.js'
+import Navbar from '../shared/Navbar.js'
 import Sidebar from './components/Sidebar';
 import MainPage from './components/MainPage';
 import React, { Component, Fragment } from 'react';
-import {connect} from 'react-redux';
 import "../Shared/css/main.css";
 
 export class Home extends Component {
@@ -10,7 +9,7 @@ export class Home extends Component {
   render() {
     return (
       <div className="window">
-        <Nav />
+        <Navbar />
         <div className="row h-100">
           <div className="col-sm-3">
             <Sidebar />
@@ -23,9 +22,5 @@ export class Home extends Component {
     )
   }
 }
-
-const mapStateToProps = state => ({
-  
-})
 
 export default Home;

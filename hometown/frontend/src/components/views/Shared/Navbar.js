@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import {Navbar, Button} from 'react-bootstrap'
 import {connect} from 'react-redux';
-import './css/nav.css';
+import './css/nav-style.css';
 
 
 export class Nav extends Component {

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from '../store';
 import Home from './views/Home/Home.js'
+import Store from './views/StoreView/Store.js'
 import {
   HashRouter as Router,
   Switch,
@@ -17,6 +18,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route path="/Store">
+              <Store />
             </Route>
           </Switch>
         </div>

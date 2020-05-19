@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import {Jumbotron, Card, ListGroup, Badge, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import { getBusiness } from '../../../../actions/business'
+import { getBusiness, selectBusiness } from '../../../../actions/business'
 import '../css/mainpage.css'
-import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
+import {
+  HashRouter as Router,
+  Link
+} from "react-router-dom";
+import L from 'leaflet'
 
 export class MainPage extends Component {
   state = {
@@ -20,6 +24,9 @@ export class MainPage extends Component {
     document.getElementById("select-name").innerHTML = e.name
     document.getElementById("select-text").innerHTML = e.description
     document.getElementById("card").style.backgroundColor = e.storefront[0].color
+    this.props.selectBusiness(e);
+    let a = document.getElementById("link")
+    a.setAttribute("to", "/StoreView")
     this.state = {
       currentSelected: e
     }
@@ -38,17 +45,19 @@ export class MainPage extends Component {
       <div className="main-page">
         <Jumbotron style={{height: "100%"}}>
           <div className="main-grid">
-            <Card onClick={e => console.log(this)} id="card" className="selected-item">
-              <Card.Body id="select">
-                <Card.Title>
-                  <div id="select-name">
-                    Select a store
-                  </div>
-                </Card.Title>
-                <Card.Text id="select-text">
-                </Card.Text>
-              </Card.Body>
-            </Card>
+            <Link id="link" to="/">
+              <Card onClick={e => console.log(this)} id="card" className="selected-item">
+                <Card.Body id="select">
+                  <Card.Title>
+                    <div id="select-name">
+                      Select a store
+                    </div>
+                  </Card.Title>
+                  <Card.Text id="select-text">
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Link>
             <div className="map-spot">
               <div id="map"></div>
             </div>
@@ -79,4 +88,4 @@ const MapStateToProps = state => ({
   business: state.business.business
 })
 
-export default connect(MapStateToProps, {getBusiness})(MainPage);
+export default connect(MapStateToProps, {getBusiness, selectBusiness})(MainPage);

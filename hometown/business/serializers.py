@@ -1,7 +1,5 @@
 from rest_framework import serializers
-from business.models import Business, Keyword, StoreFront, Item
-
-
+from .models import Business, Keyword, StoreFront, Item
 
 class KeywordSerializer(serializers.ModelSerializer):
   class Meta:
@@ -17,7 +15,6 @@ class InventorySerializer(serializers.ModelSerializer):
   class Meta:
     model = Item
     fields = "__all__"
-
 
 class BusinessSerializers(serializers.ModelSerializer):
   keywords = serializers.SlugRelatedField(

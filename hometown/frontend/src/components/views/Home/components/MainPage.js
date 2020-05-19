@@ -6,8 +6,10 @@ import { getBusiness, selectBusiness } from '../../../../actions/business'
 import '../css/mainpage.css'
 import {
   HashRouter as Router,
-  Link
+  Link,
+  useHistory
 } from "react-router-dom";
+import {Redirect} from 'react-router'
 import L from 'leaflet'
 
 export class MainPage extends Component {
@@ -18,6 +20,7 @@ export class MainPage extends Component {
   constructor(props) {
     super(props);
     this.navTap = this.navTap.bind(this);
+    
   }
 
   navTap(e) {
@@ -27,6 +30,7 @@ export class MainPage extends Component {
     this.props.selectBusiness(e);
     let a = document.getElementById("link")
     a.setAttribute("to", "/StoreView")
+    a.setAttribute("href", "/StoreView")
     this.state = {
       currentSelected: e
     }
@@ -37,49 +41,52 @@ export class MainPage extends Component {
     let mymap = L.map('map').setView([39.6306,-79.9552], 15);
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     maxZoom: 24
-}).addTo(mymap);
+    }).addTo(mymap);
   }
 
   render() {
+
     return (
-      <div className="main-page">
-        <Jumbotron style={{height: "100%"}}>
-          <div className="main-grid">
-            <Link id="link" to="/">
-              <Card onClick={e => console.log(this)} id="card" className="selected-item">
-                <Card.Body id="select">
-                  <Card.Title>
-                    <div id="select-name">
-                      Select a store
-                    </div>
-                  </Card.Title>
-                  <Card.Text id="select-text">
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Link>
-            <div className="map-spot">
-              <div id="map"></div>
-            </div>
-            <div className="list-business">
-              <ListGroup as="ul">
-                {this.props.business.map(store => (
-                  <ListGroup.Item key={store.id} action onClick={e => this.navTap(store)}>
-                    <div className="row">
-                      <div className="col">
-                        <h5>{store.name}</h5>
+      <Router>
+        <div className="main-page">
+          <Jumbotron style={{height: "100%"}}>
+            <div className="main-grid">
+              <Link id="link" to="/Store">
+                <Card id="card" className="selected-item">
+                  <Card.Body id="select">
+                    <Card.Title>
+                      <div id="select-name">
+                        Select a store
                       </div>
-                      <div className="col text-right font-weight-bold">
-                        {store.storeType}
+                    </Card.Title>
+                    <Card.Text id="select-text">
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Link>
+              <div className="map-spot">
+                <div id="map"></div>
+              </div>
+              <div className="list-business">
+                <ListGroup id="list-group" as="ul">
+                  {this.props.business.map(store => (
+                    <ListGroup.Item key={store.id} action onClick={e => this.navTap(store)}>
+                      <div className="row">
+                        <div className="col">
+                          <h5>{store.name}</h5>
+                        </div>
+                        <div className="col text-right font-weight-bold">
+                          {store.storeType}
+                        </div>
                       </div>
-                    </div>
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </div>
             </div>
-          </div>
-        </Jumbotron>
-      </div>
+          </Jumbotron>
+        </div>
+      </Router>
     )
   }
 }

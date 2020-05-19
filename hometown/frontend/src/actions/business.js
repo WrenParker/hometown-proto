@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_BUSINESS } from './types';
+import { GET_BUSINESS, SELECT_BUSINESS } from './types';
 
 export const getBusiness = () => dispatch => {
   axios.get("api/business/")
@@ -10,4 +10,11 @@ export const getBusiness = () => dispatch => {
         payload: res.data
       });
     }).catch(err => console.log(err));
+}
+
+export const selectBusiness = (business) => dispatch => {
+  dispatch({
+    type: SELECT_BUSINESS,
+    payload: business
+  })
 }

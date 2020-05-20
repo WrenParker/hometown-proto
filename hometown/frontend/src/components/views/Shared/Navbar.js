@@ -10,12 +10,18 @@ export class Nav extends Component {
     return (
       <div>
         <Navbar className="navbar" expand="lg">
-          <Navbar.Brand href="#">Hometown</Navbar.Brand>
-          <Navbar.Collapse className="justify-content-end">
-            <Button variant="outline-dark">
-              Sign In
-            </Button>
-          </Navbar.Collapse>
+          <div className="container">
+            <Navbar.Brand href="#">Hometown</Navbar.Brand>
+            <Navbar.Collapse className="justify-content-end">
+              <div className="link">
+                Sign In
+              </div>
+              {" / "}
+              <div className="link">
+                Register
+              </div>
+            </Navbar.Collapse>
+          </div>
         </Navbar>
       </div>
     )

@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import StoreView from './components/StoreView.js'
 import Navbar from '../Shared/Navbar.js'
 
-export class Store extends Component {
+export class StorePage extends Component {
   render() {
     return (
       <div className="window">
-        <Navbar />
         <div className="row h-100">
           <div className="col">
             <StoreView/>
@@ -17,4 +16,4 @@ export class Store extends Component {
   }
 }
 
-export default Store
+export default StorePage

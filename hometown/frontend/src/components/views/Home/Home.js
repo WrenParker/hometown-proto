@@ -1,4 +1,4 @@
-import Navbar from '../shared/Navbar.js'
+import Navbar from '../Shared/Navbar.js'
 import Sidebar from './components/Sidebar';
 import MainPage from './components/MainPage';
 import React, { Component, Fragment } from 'react';
@@ -9,7 +9,6 @@ export class Home extends Component {
   render() {
     return (
       <div className="window">
-        <Navbar />
         <div className="row h-100">
           <div className="col-sm-3">
             <Sidebar />

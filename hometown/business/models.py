@@ -1,17 +1,18 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Business(models.Model):
   
   name = models.CharField(max_length=100)
   description = models.CharField(max_length=100)
-  owner = models.CharField(max_length=100)
+  owner = models.ForeignKey(User, related_name="business", on_delete=models.CASCADE, null=True)
   phone = models.CharField(max_length=10)
   email = models.EmailField(max_length=100)
   storeType = models.CharField(max_length=100, null=True)
   created_at = models.DateTimeField(auto_now_add=True)
 
 class Keyword(models.Model):
-  business = models.ManyToManyField(Business, related_name="keywords")
+  business = models.ForeignKey(Business, on_delete=models.CASCADE, related_name="keywords",blank=True, null=True)
   keyword = models.CharField(max_length=15)
 
 

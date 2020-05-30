@@ -2,9 +2,12 @@ import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from '../store';
+
 import Home from './views/Home/Home.js'
 import StorePage from './views/StoreView/StorePage.js'
 import Navbar from './views/Shared/Navbar.js'
+import Login from './views/Login/Login.js'
+
 import CreateStore from './views/CreateStore/CreateStore.js'
 import {
   HashRouter as Router,
@@ -28,6 +31,9 @@ function App() {
             </Route>
             <Route path="/Create-Store">
               <CreateStore />
+            </Route>
+            <Route path="/Login">
+              <Login />
             </Route>
           </Switch>
         </div>

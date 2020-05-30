@@ -1,3 +1,8 @@
 .round-border{
   border-radius: 25px;
 }
+
+.card-scroll {
+  height:10vh;
+  overflow-y: scroll;
+}

@@ -30,8 +30,15 @@ export class CreateStore extends Component {
 
   addHours = (e) => {
     e.preventDefault();
-    console.log(document.getElementById('day').value);
-    console.log(document.getElementById('from').value)
+
+    let day = document.getElementById("day").value
+    let from = document.getElementById("from").value;
+    let to = document.getElementById("to").value;
+    let card = document.getElementById("current-hours");
+
+    let newHours = document.createElement("div");
+    newHours.innerHTML = `<div>${day + " from " + from + " to " + to}</div></br>`
+    card.appendChild(newHours)
   }
 
   render() {
@@ -191,6 +198,20 @@ export class CreateStore extends Component {
                         <option>18:00</option>
                         <option>19:00</option>
                       </select>
+                    </div>
+                  </div>
+                </div>
+                <div className="row pt-3">
+                  <div className="col">
+                    <div className="overflow-auto">
+                      <div className="card">
+                        <div className="card-header">
+                          Current Hours
+                        </div>
+                        <div className="card-body card-scroll" id="current-hours">
+
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
